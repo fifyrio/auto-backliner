@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>外链机会助手 · 设置与发现</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🔗 外链机会助手</div>
+    <div class="credits" id="credits"></div>
+  </header>
+
+  <main>
+    <!-- 设置区 -->
+    <section class="card">
+      <h2>1 · 设置</h2>
+      <div class="row">
+        <label>GoAnyAPI Key</label>
+        <input type="password" id="apiKey" placeholder="Bearer 后面的那串 key" autocomplete="off" />
+        <button id="toggleKey" class="ghost" type="button">👁</button>
+      </div>
+      <p class="hint">Key 只保存在浏览器本地（chrome.storage.sync），不会上传到任何第三方。API 文档：
+        <a href="https://goanyapi.com/zh/docs/backlink-api" target="_blank">Backlinks API</a>
+      </p>
+
+      <div class="grid2">
+        <div class="row col">
+          <label>你的姓名 / 昵称（填评论用）</label>
+          <input type="text" id="pName" placeholder="如 Alex" />
+        </div>
+        <div class="row col">
+          <label>邮箱（填评论用）</label>
+          <input type="text" id="pEmail" placeholder="如 alex@example.com" />
+        </div>
+        <div class="row col">
+          <label>你的网站 URL（website 字段）</label>
+          <input type="text" id="pSite" placeholder="https://your-site.com" />
+        </div>
+        <div class="row col">
+          <label>锚文本 Anchor</label>
+          <input type="text" id="pAnchor" placeholder="如 SiteData" />
+        </div>
+      </div>
+      <div class="row col">
+        <label>评论正文模板（可用 {site} {anchor} 占位符）</label>
+        <textarea id="pComment" rows="3" placeholder="Great write-up! I built something related at {site} — the {anchor} approach really helped."></textarea>
+      </div>
+      <button id="saveCfg" class="primary" type="button">保存设置</button>
+      <span id="saveMsg" class="savemsg"></span>
+    </section>
+
+    <!-- 发现区 -->
+    <section class="card">
+      <h2>2 · 发现外链机会</h2>
+      <p class="hint">输入 1 个或多个竞品域名（每行一个），拉取它们的 topBacklinks 作为“可去发评论外链”的候选页面。</p>
+      <textarea id="domains" rows="3" placeholder="sitedata.dev&#10;competitor2.com"></textarea>
+      <button id="discover" class="primary" type="button">🔍 发现外链机会</button>
+      <div id="discoverLog" class="log"></div>
+    </section>
+
+    <!-- 候选列表 -->
+    <section class="card">
+      <div class="listhead">
+        <h2>3 · 候选页面 <span id="countBadge" class="badge">0</span></h2>
+        <div class="filters">
+          <select id="filterStatus">
+            <option value="all">全部状态</option>
+            <option value="new">未处理</option>
+            <option value="opened">已打开</option>
+            <option value="has_form">有表单</option>
+            <option value="no_form">无表单</option>
+            <option value="captcha">有验证码</option>
+            <option value="posted">已发布</option>
+            <option value="skipped">已跳过</option>
+          </select>
+          <label class="chk"><input type="checkbox" id="onlyDofollow" /> 仅 dofollow(渲染)</label>
+          <input type="text" id="search" placeholder="搜索域名/标题" />
+          <button id="exportCsv" class="ghost" type="button">导出 CSV</button>
+          <button id="clearAll" class="danger ghost" type="button">清空</button>
+        </div>
+      </div>
+      <div class="tablewrap">
+        <table id="candTable">
+          <thead>
+            <tr>
+              <th>来源域名</th>
+              <th>DR</th>
+              <th>渲染中</th>
+              <th>锚文本</th>
+              <th>来源页标题</th>
+              <th>来自竞品</th>
+              <th>状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="candBody"></tbody>
+        </table>
+      </div>
+      <p class="empty" id="emptyMsg">还没有候选。先在上方发现外链机会。</p>
+    </section>
+  </main>
+
+  <script src="options.js"></script>
+</body>
+</html>

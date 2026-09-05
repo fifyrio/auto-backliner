@@ -1,0 +1,30 @@
+/* 页面内指示条：固定在右下，只占一行，绝不遮挡评论区。 */
+#blf-hud {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483647;
+  max-width: 280px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: #0f172a;
+  color: #e2e8f0;
+  font: 500 13px/1.4 -apple-system, "PingFang SC", system-ui, sans-serif;
+  box-shadow: 0 12px 32px rgba(2, 6, 23, 0.45);
+  pointer-events: none;
+  animation: blf-hud-in 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+#blf-hud[data-state="has_form"] { border-color: #22c55e; }
+#blf-hud[data-state="captcha"] { border-color: #f59e0b; }
+#blf-hud[data-state="no_form"],
+#blf-hud[data-state="embedded"] { border-color: #64748b; }
+
+@keyframes blf-hud-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #blf-hud { animation: none; }
+}

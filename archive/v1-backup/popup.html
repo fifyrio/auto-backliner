@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>外链机会助手</title>
+  <style>
+    body { width: 260px; margin: 0; font: 13px/1.5 -apple-system, "PingFang SC", system-ui, sans-serif; color: #1e293b; }
+    header { background: #2563eb; color: #fff; padding: 10px 12px; font-weight: 700; }
+    .body { padding: 12px; }
+    .stat { padding: 8px 10px; border-radius: 8px; background: #f1f5f9; margin-bottom: 10px; font-weight: 600; }
+    .stat.has_form { background: #dcfce7; color: #15803d; }
+    .stat.captcha { background: #fef3c7; color: #b45309; }
+    button { width: 100%; cursor: pointer; border: 1px solid #2563eb; border-radius: 8px; padding: 8px; font: inherit; font-weight: 600; background: #2563eb; color: #fff; margin-bottom: 8px; }
+    button.ghost { background: #fff; color: #1e293b; border-color: #e2e8f0; }
+    .note { color: #94a3b8; font-size: 11.5px; }
+    #keyWarn { color: #dc2626; font-size: 12px; margin-bottom: 8px; display: none; }
+  </style>
+</head>
+<body>
+  <header>🔗 外链机会助手</header>
+  <div class="body">
+    <div id="keyWarn">⚠ 尚未配置 API Key</div>
+    <div class="stat" id="stat">正在检测当前页…</div>
+    <button id="fill">拟真填充当前页评论</button>
+    <button id="dash" class="ghost">打开发现仪表盘</button>
+    <div class="note">填充后请自行检查并手动点击提交。</div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

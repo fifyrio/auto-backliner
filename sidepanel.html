@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>外链机会助手</title>
+  <link rel="stylesheet" href="src/styles/panel.css" />
+</head>
+<body>
+  <header>
+    <nav class="tabbar" id="tabbar" aria-label="工作区">
+      <button class="tabbar__btn" role="tab" data-view="collect" aria-selected="true" aria-controls="view-collect"></button>
+      <button class="tabbar__btn" role="tab" data-view="publish" aria-selected="false" aria-controls="view-publish"></button>
+      <button class="tabbar__btn" role="tab" data-view="logs" aria-selected="false" aria-controls="view-logs"></button>
+      <button class="tabbar__btn" role="tab" data-view="library" aria-selected="false" aria-controls="view-library"></button>
+      <span class="tabbar__indicator" id="tabIndicator" aria-hidden="true"></span>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="view" id="view-collect" role="tabpanel"></section>
+    <section class="view" id="view-publish" role="tabpanel" hidden></section>
+    <section class="view" id="view-logs" role="tabpanel" hidden></section>
+    <section class="view" id="view-library" role="tabpanel" hidden></section>
+    <section class="view" id="view-settings" role="region" hidden></section>
+  </main>
+
+  <footer class="footer">
+    <button type="button" id="openSettings"></button>
+    <span class="sep" aria-hidden="true">|</span>
+    <button type="button" id="clearData"></button>
+    <span class="sep" aria-hidden="true">|</span>
+    <select id="langSelect" aria-label="Language">
+      <option value="zh">中文</option>
+      <option value="en">English</option>
+    </select>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="src/panel/main.js"></script>
+</body>
+</html>
